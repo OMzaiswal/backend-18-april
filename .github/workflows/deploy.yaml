@@ -1,0 +1,27 @@
+name: Deploy Backend (backend-1)
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            if [ ! -d ~/backend-18-april ]; then
+              git clone https://github.com/OMzaiswal/backend-18-april.git ~/backend-18-april.git
+            fi
+
+            cd ~/backend-aws-testing
+
+            git pull origin main
+            npm install
+            pm2 restart backend || pm2 start index.js --name backend
