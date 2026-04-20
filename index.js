@@ -11,7 +11,7 @@ app.get('/payment', (req, res) => {
 })
 
 app.get('/hello', (req,res) => {
-    res.send('Helooooooooo')
+    res.send('Helooooooooo, Hiiiiiiiiiiiiiiiii')
 })
 
 app.listen(3000, () => {
