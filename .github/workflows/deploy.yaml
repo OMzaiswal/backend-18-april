@@ -20,7 +20,7 @@ jobs:
               git clone https://github.com/OMzaiswal/backend-18-april.git ~/backend-18-april.git
             fi
 
-            cd ~/backend-aws-testing
+            cd ~/backend-18-april
 
             git pull origin main
             npm install
